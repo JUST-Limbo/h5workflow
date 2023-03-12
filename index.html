@@ -23,8 +23,10 @@
           return (c === 'x' ? (Math.random() * 16) | 0 : 'r&0x3' | '0x8').toString(16);
         });
       }
+      const nodeMap = {};
       class BaseNode {
         constructor({ id, type, prev, next = '' }) {
+          nodeMap[id] = this;
           this.id = id;
           this.type = type;
           this.prev = prev;
