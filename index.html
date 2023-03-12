@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="fd-nav-content"></div>
+    <script>
+      function getUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+          return (c === 'x' ? (Math.random() * 16) | 0 : 'r&0x3' | '0x8').toString(16);
+        });
+      }
+      class BaseNode {
+        constructor({ id, type, prev, next = '' }) {
+          this.id = id;
+          this.type = type;
+          this.prev = prev;
+          this.next = next;
+          this.$el = document.createElement('div');
+        }
+      }
+
+      class SponsorNode extends BaseNode {
+        constructor() {
+          super({
+            id: getUUID(),
+            type: 'sponsor',
+            prev: '',
+          });
+          this.next = null;
+        }
+        render() {
+          this.$el = `
+            <div>
+                <div id="${this.id}" class="node-wrap">
+                    <div class="node-wrap-box start-node ">
+                        <div class="title" style="background: rgb(87, 106, 149);">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>发起人</span>
+                        </div>
+                        <div>
+                            <span>所有人</span>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="node-add-btn-box">
+                        <div class="add-node-btn">
+                            <button class="btn btn-primary btn-sm addNodeClick">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          `;
+        }
+        appendNode(node) {}
+      }
+    </script>
+  </body>
+</html>
