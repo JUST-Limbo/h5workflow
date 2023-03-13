@@ -43,32 +43,37 @@
             prev: '',
           });
           this.next = null;
+          this.render();
         }
         render() {
-          this.$el = `
-            <div>
-                <div id="${this.id}" class="node-wrap">
-                    <div class="node-wrap-box start-node ">
-                        <div class="title" style="background: rgb(87, 106, 149);">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <span>发起人</span>
-                        </div>
-                        <div>
-                            <span>所有人</span>
-                            <i class="glyphicon glyphicon-chevron-right"></i>
-                        </div>
-                    </div>
-                    <div class="node-add-btn-box">
-                        <div class="add-node-btn">
-                            <button class="btn btn-primary btn-sm addNodeClick">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          this.$el.innerHTML = `
+              <div id="${this.id}" class="node-wrap">
+                  <div class="node-wrap-box start-node ">
+                      <div class="title" style="background: rgb(87, 106, 149);">
+                          <i class="glyphicon glyphicon-user"></i>
+                          <span>发起人</span>
+                      </div>
+                      <div>
+                          <span>所有人</span>
+                          <i class="glyphicon glyphicon-chevron-right"></i>
+                      </div>
+                  </div>
+                  <div class="node-add-btn-box">
+                      <div class="add-node-btn">
+                          <button class="btn btn-primary btn-sm addNodeClick">+</button>
+                      </div>
+                  </div>
+              </div>
           `;
         }
         appendNode(node) {}
       }
+    </script>
+    <script>
+      const container = document.querySelector('.fd-nav-content');
+      const node1 = new SponsorNode().$el;
+      console.log(container);
+      container.appendChild(node1);
     </script>
   </body>
 </html>
