@@ -65,14 +65,105 @@
               </div>
           `;
         }
-        appendNode(node) {}
+      }
+      class ApproverNode extends BaseNode {
+        constructor() {
+          super({
+            id: getUUID(),
+            type: 'approver',
+            prev: '',
+          });
+          this.render();
+        }
+        render() {
+          this.$el.innerHTML = `
+              <div id="${this.id}" class="node-wrap">
+                  <div class="node-wrap-box start-node ">
+                        <div class="title" style="background: rgb(255, 148, 62);">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span class="userEdit">审核人</span>
+                            <i class="glyphicon glyphicon-remove btnRemove"></i>
+                        </div>
+                        <div>
+                            <span>所有人</span>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </div>
+                    </div>
+                    <!-- 朝下剪头 -->
+                    <div class="node-add-btn-box">
+                        <div class="add-node-btn">
+                            <button class="btn btn-primary btn-sm addNodeClick">+</button>
+                        </div>
+                    </div>
+              </div>
+          `;
+        }
+      }
+      class CcNode extends BaseNode {
+        constructor() {
+          super({
+            id: getUUID(),
+            type: 'cc',
+            prev: '',
+          });
+          this.render();
+        }
+        render() {
+          this.$el.innerHTML = `
+              <div id="${this.id}" class="node-wrap">
+                  <div class="node-wrap-box start-node ">
+                        <div class="title" style="background: rgb(50, 150, 250);">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span class="userEdit">抄送人</span>
+                            <i class="glyphicon glyphicon-remove btnRemove"></i>
+                        </div>
+                        <div>
+                            <span>所有人</span>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </div>
+                    </div>
+                    <!-- 朝下剪头 -->
+                    <div class="node-add-btn-box">
+                        <div class="add-node-btn">
+                            <button class="btn btn-primary btn-sm addNodeClick">+</button>
+                        </div>
+                    </div>
+              </div>
+          `;
+        }
+      }
+      class EndNode extends BaseNode {
+        constructor() {
+          super({
+            id: getUUID(),
+            type: 'end',
+            prev: '',
+          });
+          this.render();
+        }
+        render() {
+          this.$el.innerHTML = `
+              <div class="end-node">
+                  <div class="end-node-circle"></div>
+                  <div class="end-node-text">
+                      结束流程
+                  </div>
+              </div>
+          `;
+        }
       }
     </script>
     <script>
       const container = document.querySelector('.fd-nav-content');
       const node1 = new SponsorNode().$el;
-      console.log(container);
+      const node2 = new ApproverNode().$el;
+      const node3 = new CcNode().$el;
+      const node4 = new EndNode().$el;
+
       container.appendChild(node1);
+      container.appendChild(node2);
+      container.appendChild(node3);
+      container.appendChild(node4);
     </script>
   </body>
 </html>
